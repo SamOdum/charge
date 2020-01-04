@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/SamOdum/charge/issues"
   },
-  "homepage": "https://github.com/SamOdum/charge#readme"
+  "homepage": "https://github.com/SamOdum/charge#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
