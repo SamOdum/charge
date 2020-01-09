@@ -17,12 +17,18 @@
   },
   "homepage": "https://github.com/SamOdum/charge#readme",
   "dependencies": {
+    "bcrypt": "^3.0.7",
+    "cloudinary": "^1.18.1",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
-    "helmet": "^3.21.2"
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
+    "pg": "^7.17.0",
+    "validator": "^12.1.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
