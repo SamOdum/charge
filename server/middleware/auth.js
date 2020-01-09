@@ -21,7 +21,7 @@ const Helper = {
    * comparePassword
    * @param {string} hashPassword
    * @param {string} password
-   * @returns {Boolean} return True or False
+   * @returns {Boolean} returns True or False
    */
   comparePassword(hashPassword, password) {
     return bcrypt.compareSync(password, hashPassword);
@@ -43,7 +43,7 @@ const Helper = {
     const token = jwt.sign({
       userId: id,
     },
-    process.env.SECRET, { expiresIn: '4d' });
+    process.env.SECRET, { expiresIn: '15m' });
     return token;
   },
 };
