@@ -14,10 +14,10 @@ cloudinary.config({
 const Employees = {
   query: {
     createQuery: `INSERT INTO
-  employees(firstname, lastname, email, password, gender, jobrole, department, address, role, url, publicid)
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) returning *`,
-    deactivateSystemRole: 'UPDATE employees SET systemrole = $1 WHERE email = $2 returning *',
-    reactivateSystemRole: 'UPDATE employees SET systemrole = $1 WHERE email = $2 returning *',
+  employees(firstname, lastname, email, password, gender, jobrole, department, address, systemrole, status, url, publicid)
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) returning *`,
+    deactivateSystemRole: 'UPDATE employees SET status = $1 WHERE email = $2 returning *',
+    reactivateSystemRole: 'UPDATE employees SET status = $1 WHERE email = $2 returning *',
     findUser: 'SELECT * FROM employees WHERE userid = $1',
     deleteUser: 'DELETE FROM employees WHERE userid = $1 returning *',
   },
@@ -36,7 +36,7 @@ const Employees = {
       { folder: 'charge/employees' }, // This refers to the file storage location on Cloudinary
       async (error, result) => {
         const passwordHash = Helper.hashPassword(req.body.password);
-        const values = [req.body.firstName, req.body.lastName, req.body.email, passwordHash, req.body.gender, req.body.jobRole, req.body.department, req.body.address, req.body.role || 'basic', result.url, result.public_id];
+        const values = [req.body.firstName, req.body.lastName, req.body.email, passwordHash, req.body.gender, req.body.jobRole, req.body.department, req.body.address, req.body.systemrole || 'basic', req.body.status, result.url, result.public_id];
 
         try {
           const { rows } = await db.query(Employees.query.createQuery, values);

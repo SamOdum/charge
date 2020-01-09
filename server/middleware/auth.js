@@ -82,7 +82,7 @@ const Auth = {
       const decoded = jwt.verify(token, process.env.SECRET);
       const text = 'SELECT * FROM employees WHERE userid = $1';
       const { rows } = await db.query(text, [decoded.userId]);
-      if (rows[0].role !== 'admin') {
+      if (rows[0].systemrole !== 'admin') {
         return res.status(401).send({ status: 'error', error: 'Not authorized to access resource' });
       }
       next();
